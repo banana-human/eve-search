@@ -6,13 +6,10 @@ var querystring = require('querystring');
 var express = require('express');
 var app = express();
 
-var postgres;
-var postgres_release;
-
 var do_query = function(query, params) {
     var promise = q.defer();
 
-    pg.connect('postgres://user@localhost/eve', function(err, client, done) {
+    pg.connect('postgres://node@localhost/eve', function(err, client, done) {
         if(err) {
             console.log(err);
             return;
