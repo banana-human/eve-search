@@ -1,0 +1,66 @@
+html
+    head
+        title EVE Online Module Search
+        link(rel="stylesheet", href="/lib/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/angular/style.css")
+        script(src="/lib/jquery/dist/jquery.min.js")
+        script(src="/lib/angular/angular.min.js")
+        script(src="/lib/angular-bootstrap/ui-bootstrap.min.js")
+        script(src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js")
+        script(src="/angular/app.js")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge, chrome=1")
+
+    body(ng-app="app")
+        .container(ng-controller="search_control")
+            form.form-inline(ng-submit='search()')
+                div.form-group
+                    label(for='attribute') Attribute
+                    select.form-control(ng-model='attribute')
+                        option(ng-repeat='(k, v) in attributes | orderBy:"k"', value='{{ k }}') {{ k }}
+
+                div.form-group
+                    label(for='slot') Slot
+                    select.form-control(ng-model='slot')
+                        option(value='-1') Any
+                        option(value='0') Low
+                        option(value='2') Med
+                        option(value='1') High
+                        option(value='3') Rig
+
+                div.form-group
+                    label(for='size') Size
+                    select.form-control(ng-model='size')
+                        option(value='-1') Any/None
+                        option(value='1') Small
+                        option(value='2') Medium
+                        option(value='3') Large
+                        option(value='4') Capital
+
+                div.form-group
+                    label(for='min') Min
+                    input.form-control.form-control-inline(type='number', ng-model='min')
+
+                div.form-group
+                    label(for='max') Max
+                    input.form-control.form-control-inline(type='number', ng-model='max')
+
+                input.form-control(type='submit', ng-hide='true')
+
+            table.table-bordered.table(ng-show='results.length !== 0', ng-hide='error')
+                tr
+                    th Name
+                    th {{ attributes[attribute].display }}
+                    th Slot
+                    th Price
+                    th CPU
+                    th Power
+
+                tr(ng-repeat="result in results |orderResult:attribute")
+                    td {{ result.typeName }}
+                    td {{ result.attributes[attribute].value }}
+                    td {{ slots[result.effectID] }}
+                    td {{ result.price }}
+                    td {{ result.attributes.cpu.value || 0 }}
+                    td {{ result.attributes.power.value || 0 }}
+                
+            .alert.alert-danger(ng-show='error') No results found.
