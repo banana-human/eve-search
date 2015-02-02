@@ -9,7 +9,7 @@ var app = express();
 var do_query = function(query, params) {
     var promise = q.defer();
 
-    pg.connect('postgres://node@localhost/eve', function(err, client, done) {
+    pg.connect('postgres://node:imgay@localhost/eve', function(err, client, done) {
         if(err) {
             console.log(err);
             return;
