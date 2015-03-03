@@ -251,4 +251,4 @@ app.get('/search', function(req, res) {
 app.use('/angular', express.static(__dirname + '/angular'));
 app.use('/lib', express.static(__dirname + '/bower_components'));
 
-app.listen(8181);
+app.listen(8181, "127.0.0.1");
