@@ -42,7 +42,7 @@ angular.module('app').controller('search_control', function($scope, $http) {
     });
 
     $scope.search = function() {
-        $http.get('/search?' + $.param({
+        $http.get('/search?' + jQuery.param({
             min: $scope.min,
             max: $scope.max,
             attribute: $scope.attribute,
