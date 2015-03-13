@@ -8,6 +8,10 @@ angular.module('app').filter('orderResult', function() {
             filtered.push(item);
         });
 
+        if(filtered.length === 0) {
+            return [];
+        }
+
         filtered.sort(function (a, b) {
             return (a.attributes[field].value > b.attributes[field].value ? 1 : -1);
         });
