@@ -9,6 +9,8 @@ html
         script(src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js")
         script(src="/angular/app.js")
         meta(http-equiv="X-UA-Compatible", content="IE=edge, chrome=1")
+        script
+            | var $jq = jQuery.noConflict();
 
     body(ng-app="app")
         .container(ng-controller="search_control")

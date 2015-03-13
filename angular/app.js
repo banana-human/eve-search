@@ -1,7 +1,5 @@
 angular.module('app', [ 'ui.bootstrap', 'ui.bootstrap.tpls' ]);
 
-var $jq = jQuery.noConflict();
-
 angular.module('app').filter('orderResult', function() {
     return function(items, field) {
         var filtered = [];
