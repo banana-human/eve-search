@@ -1,3 +1,5 @@
+var $ = jQuery.noConflict();
+
 angular.module('app', [ 'ui.bootstrap', 'ui.bootstrap.tpls' ]);
 
 angular.module('app').filter('orderResult', function() {
