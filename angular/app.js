@@ -13,8 +13,16 @@ angular.module('app').filter('orderResult', function() {
         }
 
         filtered.sort(function (a, b) {
+            if(a.attributes[field] === undefined || b.attributes[field] === undefined) {
+                return 1;
+            }
+
             return (a.attributes[field].value > b.attributes[field].value ? 1 : -1);
         });
+
+        if(filtered[0] === undefined || filtered[0].attributes[field] === undefined) {
+            return [];
+        }
 
         var high_is_good = filtered[0].attributes[field].highIsGood;
 
