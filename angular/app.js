@@ -57,3 +57,7 @@ angular.module('app').controller('search_control', function($scope, $http) {
         });
     };
 });
+
+window.onload = function() {
+    console.log(jQuery);
+};
