@@ -1,5 +1,3 @@
-var $ = jQuery.noConflict();
-
 angular.module('app', [ 'ui.bootstrap', 'ui.bootstrap.tpls' ]);
 
 angular.module('app').filter('orderResult', function() {
@@ -48,7 +46,7 @@ angular.module('app').controller('search_control', function($scope, $http) {
     });
 
     $scope.search = function() {
-        $http.get('/search?' + $.param({
+        $http.get('/search?' + jQuery.param({
             min: $scope.min,
             max: $scope.max,
             attribute: $scope.attribute,
