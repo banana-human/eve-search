@@ -42,7 +42,7 @@ angular.module('app').controller('search_control', function($scope, $http) {
     });
 
     $scope.search = function() {
-        $http.get('/search?' + jQuery.param({
+        $http.get('/search?' + angular.element.param({
             min: $scope.min,
             max: $scope.max,
             attribute: $scope.attribute,
@@ -57,7 +57,3 @@ angular.module('app').controller('search_control', function($scope, $http) {
         });
     };
 });
-
-window.onload = function() {
-    console.log(jQuery);
-};
